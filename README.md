@@ -12,7 +12,31 @@ To Develop a python program to Plot a time series data (population/ market price
 5. Display the graph.
 # PROGRAM:
 
+import matplotlib.pyplot as plt
+import pandas as pd
 
+df = pd.read_csv("climate.csv", sep="\t")
+
+df.head()
+
+df["date(X)"] = pd.to_datetime(
+    df["date(X)"], format="%d-%m-%Y"
+)
+
+df.set_index("date(X)", inplace=True)
+
+df["meantemp(Y)"].plot(
+    kind="line",
+    label="Mean Temperature",
+    color="black"
+)
+
+plt.title("Time Series Plot of Delhi Mean Temperature")
+plt.xlabel("Date")
+plt.ylabel("Mean Temperature")
+plt.legend()
+plt.grid(True)
+plt.show()
 
 
 
@@ -25,6 +49,7 @@ To Develop a python program to Plot a time series data (population/ market price
 # OUTPUT:
 
 
+<img width="720" height="577" alt="image" src="https://github.com/user-attachments/assets/51a64762-aaa3-4837-ac1c-394377fccc58" />
 
 
 
